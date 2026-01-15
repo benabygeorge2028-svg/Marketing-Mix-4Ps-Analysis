@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amal Jyothi College of Engineering - Marketing Mix Analysis</title>
+    <link rel="icon" href="download.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="college.jpg" as="image">
+    <link rel="preload" href="download.png" as="image">
+
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #00a8cc;
+            --accent: #ff6b35;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-lg: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+       
+        nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 5%;
+            background: rgba(255,255,255,0.98);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .brand-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #003366;
+            white-space: nowrap;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background:
+            linear-gradient(rgba(0,51,102,0.8), rgba(0,168,204,0.6)),
+            url("college.jpg") center / cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #ff8e53);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255,107,53,0.6);
+        }
+
+       
+        section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            transition: all 0.4s ease;
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,168,204,0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .location-highlight {
+            background: linear-gradient(135deg, rgba(0,168,204,0.1), rgba(0,51,102,0.1));
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--secondary);
+            text-align: center;
+        }
+
+        .location-highlight h4 {
+            color: var(--secondary);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .travel-card {
+            background: rgba(255,255,255,0.8);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .travel-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .travel-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        
+        ul, ol {
+            margin-left: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.3s ease;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            text-align: center;
+            padding: 4rem 5% 2rem;
+            margin-top: 100px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                height: 80vh;
+                padding: 0 1rem;
+            }
+
+            section {
+                margin: 60px auto;
+                padding: 0 5%;
+            }
+
+            .card {
+                padding: 2rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav id="navbar">
+        <div class="brand">
+            <img src="download.png" alt="Amal Jyothi College of Engineering Logo" class="nav-logo">
+            <span class="brand-text">Amal Jyothi College of Engineering</span>
+        </div>
+
+        <ul>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#price">Price</a></li>
+            <li><a href="#place">Place</a></li>
+            <li><a href="#promotion">Promotion</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Marketing Mix (4Ps) Analysis</h1>
+            <p>Comprehensive strategic case study of Amal Jyothi College of Engineering from a student perspective</p>
+            <a href="#product" class="cta-button">Explore Analysis</a>
+        </div>
+    </div>
+
+    <section class="fade-in">
+        <div class="section-header">
+            <h2>Executive Summary</h2>
+        </div>
+        <div class="card">
+            <h3><div class="icon"><i class="fas fa-rocket"></i></div> Strategic Overview</h3>
+            <p>
+                In India's competitive higher education landscape with 40,000+ engineering colleges, 
+                Amal Jyothi College of Engineering (AJCE) strategically leverages the 4Ps of marketing 
+                to attract 1,200+ students annually. This analysis examines how AJCE delivers exceptional 
+                <strong>academic value, infrastructure excellence, and placement success</strong> through 
+                targeted marketing strategies.
+            </p>
+        </div>
+    </section>
+
+    <section id="product" class="fade-in">
+        <div class="card">
+            <h3><div class="icon"><i class="fas fa-graduation-cap"></i></div> Product Strategy</h3>
+            <p><strong>Core Offering:</strong> 12 B.Tech programs, 6 M.Tech specializations, and PhD research aligned with KTU & AICTE standards.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div>Faculty with PhD/M.Tech</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div>Placement Rate (2025)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1200+</div>
+                    <div>Modern Lab Equipment</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div>Student Clubs & Chapters</div>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Academic Excellence:</strong> NBA accredited programs, industry-relevant curriculum</li>
+                <li><strong>Infrastructure:</strong> 60-acre Wi-Fi campus, 100+ AC classrooms, central AC library</li>
+                <li><strong>Holistic Development:</strong> IEEE, CSI chapters, hackathons, entrepreneurship cell</li>
+                <li><strong>Student Support:</strong> 24/7 medical, counseling, skill development programs</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="price" class="fade-in">
+        <div class="card">
+            <h3><div class="icon"><i class="fas fa-rupee-sign"></i></div> Pricing Strategy</h3>
+            
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th>Annual Fees (₹)</th>
+                    <th>Competitor Average</th>
+                    <th>Value Proposition</th>
+                </tr>
+                <tr>
+                    <td>B.Tech Tuition (Merit)</td>
+                    <td>75,000</td>
+                    <td>90,000</td>
+                    <td>25% below average</td>
+                </tr>
+                <tr>
+                    <td>B.Tech Tuition (Management)</td>
+                    <td>1,00,000</td>
+                    <td>1,35,000</td>
+                    <td>Industry placements</td>
+                </tr>
+                <tr>
+                    <td>Hostel + Mess</td>
+                    <td>75,000</td>
+                    <td>85,000</td>
+                    <td>AC rooms available</td>
+                </tr>
+                <tr>
+                    <td>Scholarships</td>
+                    <td>₹50L+ annually</td>
+                    <td>-</td>
+                    <td>Merit + Income based</td>
+                </tr>
+            </table>
+
+            <p><strong>Perception:</strong> Students rate AJCE 4.6/5 for value-for-money considering 85% placement rate and TCS/Infosys recruitments.</p>
+        </div>
+    </section>
+
+    <section id="place" class="fade-in">
+        <div class="card">
+            <h3><div class="icon"><i class="fas fa-map-marker-alt"></i></div> Distribution Strategy</h3>
+            
+            <div class="location-highlight">
+                <h4><i class="fas fa-location-dot"></i> Kanjirappally, Kottayam - Gateway to God's Own Country</h4>
+                <p style="color: var(--dark); font-size: 1.1rem;">📍 60-acre peaceful green campus | 4km from NH183</p>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps?q=Amal%20Jyothi%20College%20of%20Engineering&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Amal Jyothi College of Engineering - Exact Location">
+                </iframe>
+            </div>
+
+            <div class="travel-grid">
+                <div class="travel-card">
+                    <div class="travel-icon">✈️</div>
+                    <strong>Cochi Airport (COK)</strong><br>
+                    <span style="color: var(--secondary);">110 km • 2.5 hrs drive</span>
+                </div>
+                <div class="travel-card">
+                    <div class="travel-icon">🚂</div>
+                    <strong>Kottayam Railway Station</strong><br>
+                    <span style="color: var(--secondary);">55 km • Frequent trains</span>
+                </div>
+                <div class="travel-card">
+                    <div class="travel-icon">🚌</div>
+                    <strong>KSRTC Buses</strong><br>
+                    <span style="color: var(--secondary);">Doorstep connectivity</span>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>💻 Digital Infrastructure:</strong> Moodle LMS, 1Gbps internet, virtual labs</li>
+                <li><strong>📱 Hybrid Learning:</strong> Google Workspace, recorded lectures, 24/7 e-resources</li>
+                <li><strong>🌍 Expansion Plan:</strong> New Kochi campus for working professionals (2027)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="promotion" class="fade-in">
+        <div class="card">
+            <h3><div class="icon"><i class="fas fa-bullhorn"></i></div> Promotion Strategy</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div style="text-align: center;">
+                    <i class="fas fa-users" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <h4>15K+ Followers</h4>
+                    <p>Social media community</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-eye" style="font-size: 3rem; color: var(--accent); margin-bottom: 1rem;"></i>
+                    <h4>500K+ Views</h4>
+                    <p>YouTube channel reach</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-handshake" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h4>50+ Partners</h4>
+                    <p>Corporate connections</p>
+                </div>
+            </div>
+
+            <ul>
+                <li>Multi-channel digital marketing (website, Instagram, LinkedIn, YouTube)</li>
+                <li>200+ education fair participations annually across Kerala</li>
+                <li>Alumni network of 8,000+ professionals (85% recommendation rate)</li>
+                <li>Industry partnerships with TCS, Infosys, Bosch for branding</li>
+            </ul>
+            <video controls width="100%" style="border-radius:8px;">
+                <source src="videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section id="conclusion" class="fade-in">
+        <div class="section-header">
+            <h2>Strategic Recommendations</h2>
+        </div>
+        <div class="card">
+            <h3><div class="icon"><i class="fas fa-lightbulb"></i></div> Actionable Improvements</h3>
+            
+            <ol style="counter-reset: list-counter; list-style: none; font-size: 1.2rem;">
+                <li style="counter-increment: list-counter;"><span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 700; margin-right: 1rem;">01</span> 
+                    Launch influencer marketing with Kerala toppers (Target: 30% application increase)
+                </li>
+                <li style="counter-increment: list-counter;"><span style="background: var(--secondary); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 700; margin-right: 1rem;">02</span> 
+                    Introduce 5 industry-certified programs (AWS, Cisco, Six Sigma certifications)
+                </li>
+                <li style="counter-increment: list-counter;"><span style="background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 700; margin-right: 1rem;">03</span> 
+                    Semester exchange programs with 3 international universities (Germany/USA)
+                </li>
+            </ol>
+
+            <p style="margin-top: 3rem; font-size: 1.2rem; font-style: italic; text-align: center; color: var(--primary);">
+                <strong>AJCE demonstrates excellent 4Ps execution with tremendous growth potential through digital transformation and global partnerships.</strong>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Amal Jyothi College of Engineering | Marketing Mix Strategic Analysis</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Prepared by Marketing Analytics Team | Data as of January 2026</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
